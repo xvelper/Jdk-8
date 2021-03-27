@@ -1,0 +1,7 @@
+create database Продажи_магазина character set utf8;
+use Продажи_магазина;
+create table Продавец (Код INT PRIMARY KEY, ФИО varchar(100), Город varchar(100), Процент INT);
+create table Покупатель (Код INT PRIMARY KEY, ФИО varchar(100), Город varchar(100));
+create table Производитель (Код INT PRIMARY KEY, Название varchar(100), Страна varchar(100));
+create table Товар (Код INT PRIMARY KEY, Название varchar(100), Стоймость INT, Производитель INT, FOREIGN KEY (Производитель) REFERENCES Производитель(Код));
+create table Продажи (Код INT PRIMARY KEY, Продавец INT, Покупатель INT, Товар INT, Стоймость INT, Дата varchar(100), FOREIGN KEY (Продавец) REFERENCES Продавец(Код), FOREIGN KEY (Покупатель) REFERENCES Покупатель(Код), FOREIGN KEY (Товар) REFERENCES Товар(Код));
